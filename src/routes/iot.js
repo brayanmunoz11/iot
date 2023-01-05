@@ -30,10 +30,10 @@ router.post("/publicar/:iddata", async (req, res,next) => {
     };
 
     console.log(data);
-    await pool.query("update data set ? where idLibro = 1", [actLibro, iddata]);
+    await pool.query("update data set ? where iddata = ?", [data, iddata]);
 
     res.status(200).json({
-    message:"Data updated"
+      message:"Data updated"
     })
   
   } catch (error) {
