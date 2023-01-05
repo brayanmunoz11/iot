@@ -4,7 +4,7 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 
 
-const { database } = require('./keys');
+const { database } = require('./src/keys');
 
 // Intializations
 const app = express();
@@ -30,7 +30,7 @@ app.use(session({
 
 
 //Routes
-app.use(require('./routes/iot'));
+app.use(require('./src/routes/iot'));
 
 app.get('/', (req, res) => {
   //Resopuesta a la peticion
