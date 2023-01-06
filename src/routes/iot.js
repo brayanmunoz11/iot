@@ -33,7 +33,7 @@ router.post("/publicar/:iddata", async (req, res,next) => {
     };
 
     data[0].temperatura = databody.temperatura;
-    data[0].humedad = databody.temperatura;
+    data[0].humedad = databody.humedad;
     
     console.log(data)
 
