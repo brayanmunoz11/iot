@@ -1,10 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const pool = require("../database");
+
+const data = require("../sample.json");
+
+
+
 
 router.get("/publicar", async (req, res,next) => {
   try{
-    const data = await pool.query("SELECT * FROM data");
     res.status(200).json({
       data: data[0]
     })
@@ -24,13 +27,15 @@ router.post("/publicar/:iddata", async (req, res,next) => {
   try {
     const { iddata } = req.params;
     const { temperatura, humedad} = req.body;
-    const data = {
+    const databody = {
       temperatura,
       humedad
     };
 
-    console.log(data);
-    await pool.query("update data set ? where iddata = ?", [data, iddata]);
+    data[0].temperatura = databody.temperatura;
+    data[0].humedad = databody.temperatura;
+    
+    console.log(data)
 
     res.status(200).json({
       message:"Data updated"
